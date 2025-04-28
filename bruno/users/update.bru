@@ -1,0 +1,23 @@
+meta {
+  name: update
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/users/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 1
+}
+
+body:json {
+  {
+    "email": "mathis.rome@icloud.com",
+    "name": "Mathis test",
+    "password": "test"
+  }
+}
