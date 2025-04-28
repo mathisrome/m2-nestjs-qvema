@@ -1,0 +1,10 @@
+services:
+  node: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    command: sh -c "npm install && npm run start"
+    ports:
+      - 3000:3000
