@@ -12,7 +12,7 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  create(createUserDto: CreateUserDto) {
+  create(createUserDto: CreateUserDto | User) {
     return this.usersRepository.save(createUserDto);
   }
 
@@ -20,17 +20,25 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.usersRepository.findOne({
-      where: { id },
+      where: {
+        id: id,
+      },
     });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(id: string, updateUserDto: UpdateUserDto) {
     return this.usersRepository.save(updateUserDto);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} user`;
+  }
+
+  findOneByEmail(email: string) {
+    return this.usersRepository.findOne({
+      where: { email },
+    });
   }
 }
