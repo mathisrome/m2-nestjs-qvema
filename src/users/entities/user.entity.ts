@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import Role from 'src/auth/role';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
@@ -13,7 +14,11 @@ export class User {
   name: string;
 
   @Column()
+  @Exclude()
   password: string;
+
+  @Exclude()
+  plainPassword: string | undefined;
 
   @Column()
   role: Role = Role.Entrepreneur;

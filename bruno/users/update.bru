@@ -5,19 +5,20 @@ meta {
 }
 
 put {
-  url: http://localhost:3000/users/:id
+  url: http://localhost:3000/users/profile
   body: json
-  auth: inherit
+  auth: bearer
 }
 
-params:path {
-  id: 1
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGhpcy5yb21lQGljbG91ZC5jb20iLCJ1dWlkIjoiYmM1YjBkMzQtMjJmYy00NTU5LWIxY2ItYzFjY2EwYThlZDQ1Iiwicm9sZSI6ImVudHJlcHJlbmV1ciIsImlhdCI6MTc0NTk5NTA1NSwiZXhwIjoxNzQ1OTk4NjU1fQ.0qtcTUAxmnxTI02knYqjA7Mh2J_eTWVdOWEj3BOTVtY
 }
 
 body:json {
   {
+    "id": "bc5b0d34-22fc-4559-b1cb-c1cca0a8ed45",
     "email": "mathis.rome@icloud.com",
     "name": "Mathis test",
-    "password": "test"
+    "plainPassword": "testtest"
   }
 }

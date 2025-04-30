@@ -1,16 +1,10 @@
-import {
-  Body,
-  Controller,
-  HttpStatus,
-  Post,
-  Res,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
 import { User } from 'src/users/entities/user.entity';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/users.service';
+import { plainToInstance } from 'class-transformer';
 
 @Controller('auth')
 export class AuthController {
@@ -35,6 +29,6 @@ export class AuthController {
 
   @Post('/register')
   register(@Body() createUser: CreateUserDto) {
-    return this.authService.register(createUser);
+    return plainToInstance(User, this.authService.register(createUser));
   }
 }
