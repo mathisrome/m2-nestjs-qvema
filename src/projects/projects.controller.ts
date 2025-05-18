@@ -8,6 +8,7 @@ import {
   UseGuards,
   Request,
   Put,
+  NotFoundException,
 } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { UpdateProjectDto } from './dto/update-project.dto';
@@ -70,5 +71,16 @@ export class ProjectsController {
   ])
   remove(@Param('id') id: string) {
     return this.projectsService.remove(id);
+  }
+
+  @Get('/recommended')
+  async recommanded(@Request() req) {
+    const user = await this.usersService.findOneByEmail(req.user.email);
+
+    if (!user) {
+      throw new NotFoundException();
+    }
+    
+    return this.projectsService.findByInterests(user.interests);
   }
 }

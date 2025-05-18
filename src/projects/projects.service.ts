@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { plainToInstance } from 'class-transformer';
 import { CreateProjectDto } from './dto/create-project.dto';
+import Category from './category';
 
 @Injectable()
 export class ProjectsService {
@@ -40,5 +41,19 @@ export class ProjectsService {
 
   remove(id: string) {
     return this.projectsRepository.delete({ id });
+  }
+
+  findByInterests(interests: Category[]) {
+    console.log(interests);
+    
+    const filters: { category: Category }[] = [];
+
+    interests.forEach((interest) => filters.push({ category: interest }));
+
+    console.log(filters);
+
+    return this.projectsRepository.find({
+      where: filters,
+    });
   }
 }

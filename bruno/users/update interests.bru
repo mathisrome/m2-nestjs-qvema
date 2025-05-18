@@ -1,15 +1,24 @@
 meta {
-  name: index
+  name: update interests
   type: http
-  seq: 1
+  seq: 7
 }
 
-get {
-  url: http://localhost:3000/projects
-  body: none
+post {
+  url: http://localhost:3000/users/interests
+  body: json
   auth: bearer
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGhpcy5yb21lQGljbG91ZC5jb20iLCJpZCI6IjBjMWY4ZTJlLTBkNDMtNGQ5ZS1iNzBlLWJmMDE2MjhiOWI4YiIsInJvbGVzIjpbImVudHJlcHJlbmV1ciJdLCJpYXQiOjE3NDc1ODA3NzAsImV4cCI6MTc0NzU4NDM3MH0.8OqHMUjvzYfMlPKbofNn9lUOyrqOW60UHHYcSjXaOoo
+}
+
+body:json {
+  {
+    "interests": [
+      "technology",
+      "finance"
+    ]
+  }
 }

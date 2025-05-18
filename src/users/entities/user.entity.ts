@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
 import Role from 'src/auth/roles';
+import Category from 'src/projects/category';
 import { Project } from 'src/projects/entities/project.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
@@ -26,4 +27,7 @@ export class User {
 
   @OneToMany(() => Project, (project) => project.owner)
   projects: Project[];
+
+  @Column('simple-array')
+  interests: Category[];
 }
