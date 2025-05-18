@@ -1,0 +1,28 @@
+meta {
+  name: update
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/projects/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  id: 9bea1933-1b9f-4bf8-b0a9-f34c2276d34c
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGhpcy5yb21lQGljbG91ZC5jb20iLCJpZCI6IjBjMWY4ZTJlLTBkNDMtNGQ5ZS1iNzBlLWJmMDE2MjhiOWI4YiIsInJvbGVzIjpbImVudHJlcHJlbmV1ciJdLCJpYXQiOjE3NDc1NzUxMzEsImV4cCI6MTc0NzU3ODczMX0.Btl1fHWDA5LF0BqFvYGJ7dUAm-ba6QNbyDj9OHw4ANk
+}
+
+body:json {
+  {
+    "title": "Ceci est le fdq d'un projet",
+    "description": "Ceci est la description d'un projet",
+    "budget": 200,
+    "category": "finance"
+  }
+}

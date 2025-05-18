@@ -7,13 +7,18 @@ meta {
 post {
   url: http://localhost:3000/users
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGhpcy5yb21lQGljbG91ZC5jb20iLCJ1dWlkIjoiZTIyZTdkZTUtZTEzZi00MzM5LWE0YTQtNjY1OGZlZTBjNGZlIiwicm9sZSI6ImVudHJlcHJlbmV1ciIsImlhdCI6MTc0NzU3MDE2OSwiZXhwIjoxNzQ3NTczNzY5fQ.gaqzQhc4JFSx0XnbnxxSDl20GqR96kO6gXeHteu-o9Q
 }
 
 body:json {
   {
-    "email": "mathis.rome@icloud.com",
+    "email": "test@test.com",
     "name": "Mathis ROME",
-    "password": "test"
+    "plainPassword": "test",
+    "role": "entrepreneur"
   }
 }

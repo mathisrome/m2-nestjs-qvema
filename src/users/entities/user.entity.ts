@@ -1,6 +1,7 @@
 import { Exclude } from 'class-transformer';
-import Role from 'src/auth/role';
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import Role from 'src/auth/roles';
+import { Project } from 'src/projects/entities/project.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity()
 export class User {
@@ -21,5 +22,8 @@ export class User {
   plainPassword: string | undefined;
 
   @Column()
-  role: Role = Role.Entrepreneur;
+  roles: Role = Role.Entrepreneur;
+
+  @OneToMany(() => Project, (project) => project.owner)
+  projects: Project[];
 }

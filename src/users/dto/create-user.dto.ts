@@ -1,6 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { IsEmail, IsNotEmpty, IsOptional } from 'class-validator';
-import Role from 'src/auth/role';
+import { IsEmail, IsNotEmpty } from 'class-validator';
+import Roles from 'src/auth/roles';
 
 export class CreateUserDto {
   @IsEmail()
@@ -9,12 +9,12 @@ export class CreateUserDto {
   @IsNotEmpty()
   name: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   plainPassword: string;
 
   @Exclude()
   password: string | undefined;
 
-  @IsOptional()
-  role: Role | undefined = Role.Entrepreneur;
+  @IsNotEmpty()
+  roles: Roles;
 }

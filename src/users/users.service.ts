@@ -13,10 +13,8 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  async create(createUserDto: CreateUserDto | User) {
-    console.log(createUserDto);
-    
-    if (createUserDto instanceof CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
+    if (createUserDto.plainPassword.length > 0) {
       createUserDto.password = await bcrypt.hash(
         createUserDto.plainPassword,
         bcrypt.genSaltSync(10),
@@ -38,7 +36,7 @@ export class UsersService {
     });
   }
 
-  async update(updateUserDto: UpdateUserDto) {
+  async update(email: string, updateUserDto: UpdateUserDto) {
     if (updateUserDto.plainPassword) {
       updateUserDto.password = await bcrypt.hash(
         updateUserDto.plainPassword,
@@ -46,7 +44,9 @@ export class UsersService {
       );
     }
 
-    return this.usersRepository.save(updateUserDto);
+    this.usersRepository.update(email, updateUserDto);
+
+    return this.findOneByEmail(email);
   }
 
   remove(id: string) {

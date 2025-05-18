@@ -1,0 +1,24 @@
+meta {
+  name: create
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/projects
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGhpcy5yb21lQGljbG91ZC5jb20iLCJpZCI6IjBjMWY4ZTJlLTBkNDMtNGQ5ZS1iNzBlLWJmMDE2MjhiOWI4YiIsInJvbGVzIjpbImVudHJlcHJlbmV1ciJdLCJpYXQiOjE3NDc1NzQ2MTEsImV4cCI6MTc0NzU3ODIxMX0.9792LkTke-uP__h7eLjqC40oH0ddA9FYTASxfcw92zg
+}
+
+body:json {
+  {
+    "title": "Ceci est le titre d'un projet",
+    "description": "Ceci est la description d'un projet",
+    "budget": 100,
+    "category": "finance"
+  }
+}

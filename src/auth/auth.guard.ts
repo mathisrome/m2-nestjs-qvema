@@ -18,6 +18,7 @@ export class AuthGuard {
     if (!user) return false;
 
     request.user = user;
+
     return true;
   }
 

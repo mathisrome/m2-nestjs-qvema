@@ -6,6 +6,9 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from 'ormconfig';
 import { AuthModule } from './auth/auth.module';
+import { ProjectsModule } from './projects/projects.module';
+import { CaslModule } from 'nest-casl';
+import Roles from './auth/roles';
 
 @Module({
   imports: [
@@ -13,6 +16,10 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     TypeOrmModule.forRoot(typeOrmConfig),
     AuthModule,
+    ProjectsModule,
+    CaslModule.forRoot<Roles>({
+      getUserFromRequest: (request) => request.user,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

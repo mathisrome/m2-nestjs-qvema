@@ -8,8 +8,6 @@ import {
   UseGuards,
   Request,
   Put,
-  UseInterceptors,
-  ClassSerializerInterceptor,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -27,7 +25,7 @@ export class UsersController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+    return plainToInstance(User, this.usersService.create(createUserDto));
   }
 
   @Get()
@@ -37,12 +35,18 @@ export class UsersController {
 
   @Get('/profile')
   profile(@Request() req) {
-    return plainToInstance(User, this.usersService.findOneByEmail(req.user.email));
+    return plainToInstance(
+      User,
+      this.usersService.findOneByEmail(req.user.email),
+    );
   }
 
   @Put('/profile')
   update_profile(@Request() req, @Body() updateUserDto: UpdateUserDto) {
-    return plainToInstance(User, this.usersService.update(updateUserDto));
+    return plainToInstance(
+      User,
+      this.usersService.update(req.user.email, updateUserDto),
+    );
   }
 
   @Delete(':id')
