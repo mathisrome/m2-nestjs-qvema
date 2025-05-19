@@ -1,0 +1,19 @@
+meta {
+  name: by project
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:3000/investments/project/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: af48a8b4-0756-49d2-92b5-a35241dd1306
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGhpcy5yb21lQGljbG91ZC5jb20iLCJpZCI6IjBjMWY4ZTJlLTBkNDMtNGQ5ZS1iNzBlLWJmMDE2MjhiOWI4YiIsInJvbGVzIjpbImludmVzdG9yIl0sImlhdCI6MTc0NzY0NjE5NCwiZXhwIjoxNzQ3NjQ5Nzk0fQ.E4I9Sjo3Oz0-3kjXC8QpsLD8PfmDaQegsR7lKsqQFOE
+}

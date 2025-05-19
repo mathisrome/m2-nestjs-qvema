@@ -13,5 +13,6 @@ import { CaslModule } from 'nest-casl';
     TypeOrmModule.forFeature([Project]),
     CaslModule.forFeature({ permissions }),
   ],
+  exports: [ProjectsService],
 })
 export class ProjectsModule {}

@@ -45,7 +45,7 @@ export class ProjectsService {
 
   findByInterests(interests: Category[]) {
     console.log(interests);
-    
+
     const filters: { category: Category }[] = [];
 
     interests.forEach((interest) => filters.push({ category: interest }));
