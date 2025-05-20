@@ -1,0 +1,19 @@
+meta {
+  name: delete users
+  type: http
+  seq: 2
+}
+
+delete {
+  url: http://localhost:3000/admin/users/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 19e56899-bfa6-47dc-a789-c56916525511
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlkIjoiODk4MTU3YjQtYmNjZi00YmY2LTliYjItZjRkMWVmOTdiMDA0Iiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzQ3NzUwMDQwLCJleHAiOjE3NDc3NTM2NDB9.ewIAgJ6i2OMoDQSxrD3_JLOSurna7f9J1Jnz6VfwxWE
+}

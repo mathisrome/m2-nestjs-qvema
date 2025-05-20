@@ -1,0 +1,15 @@
+meta {
+  name: users
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:3000/admin/users
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlkIjoiODk4MTU3YjQtYmNjZi00YmY2LTliYjItZjRkMWVmOTdiMDA0Iiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzQ3NzUwMDQwLCJleHAiOjE3NDc3NTM2NDB9.ewIAgJ6i2OMoDQSxrD3_JLOSurna7f9J1Jnz6VfwxWE
+}

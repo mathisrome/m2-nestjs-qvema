@@ -22,14 +22,20 @@ export class InvestmentsService {
     );
   }
 
-  findAll(userEmail: string) {
-    return this.investmentsRepository.find({
-      where: {
-        investor: {
-          email: userEmail,
+  findAll(userEmail: string|null = null) {
+    let options = {}
+
+    if (userEmail) {
+      options = {
+        where: {
+          investor: {
+            email: userEmail,
+          },
         },
-      },
-    });
+      }
+    }
+
+    return this.investmentsRepository.find(options);
   }
 
   findByProject(project: Project) {

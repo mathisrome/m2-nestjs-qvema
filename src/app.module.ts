@@ -10,6 +10,7 @@ import { ProjectsModule } from './projects/projects.module';
 import { CaslModule } from 'nest-casl';
 import { InterestsModule } from './interests/interests.module';
 import { InvestmentsModule } from './investments/investments.module';
+import { AdminModule } from './admin/admin.module';
 import Roles from './auth/roles';
 
 @Module({
@@ -24,6 +25,7 @@ import Roles from './auth/roles';
     }),
     InterestsModule,
     InvestmentsModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],

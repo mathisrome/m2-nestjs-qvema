@@ -15,5 +15,8 @@ import { ProjectsModule } from 'src/projects/projects.module';
     CaslModule.forFeature({ permissions }),
     ProjectsModule,
   ],
+  exports: [
+    InvestmentsService
+  ]
 })
 export class InvestmentsModule {}

@@ -65,4 +65,8 @@ export class UsersService {
 
     this.usersRepository.save(user);
   }
+
+  delete(id: string) {
+    return this.usersRepository.delete(id)
+  }
 }
