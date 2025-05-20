@@ -29,8 +29,11 @@ export class User {
   @OneToMany(() => Project, (project) => project.owner)
   projects: Project[];
 
-  @Column('simple-array')
-  interests: Category[];
+  @Column({
+    type: 'simple-array',
+    default: null
+  })
+  interests: Category[] = [];
 
   @OneToMany(() => Investment, (investment) => investment.investor)
   investments: Investment[];

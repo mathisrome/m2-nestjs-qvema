@@ -81,6 +81,6 @@ export class ProjectsController {
       throw new NotFoundException();
     }
     
-    return this.projectsService.findByInterests(user.interests);
+    return this.projectsService.findByInterests(user.interests ?? []);
   }
 }

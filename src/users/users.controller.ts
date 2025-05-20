@@ -65,7 +65,7 @@ export class UsersController {
       throw new NotFoundException();
     }
 
-    return user.interests;
+    return user.interests ?? [];
   }
 
   @Post('/interests')
