@@ -6,6 +6,7 @@ import { UpdateProjectDto } from './dto/update-project.dto';
 import { plainToInstance } from 'class-transformer';
 import { CreateProjectDto } from './dto/create-project.dto';
 import Category from './category';
+import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class ProjectsService {
@@ -54,6 +55,19 @@ export class ProjectsService {
 
     return this.projectsRepository.find({
       where: filters,
+    });
+  }
+
+  findByUser(user: User) {
+    return this.projectsRepository.find({
+      relations: {
+        owner: true,
+      },
+      where: {
+        owner: {
+          id: user.id,
+        },
+      },
     });
   }
 }

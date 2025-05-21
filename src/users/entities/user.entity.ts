@@ -31,7 +31,7 @@ export class User {
 
   @Column({
     type: 'simple-array',
-    default: null
+    default: null,
   })
   interests: Category[] = [];
 

@@ -14,10 +14,12 @@ export class Investment {
   @Column({ type: 'date' })
   date: string;
 
-  @ManyToOne(() => Project, (project) => project.investments)
+  @ManyToOne(() => Project, (project) => project.investments, {
+    onDelete: 'CASCADE',
+  })
   project: Project;
 
-  @ManyToOne(() => User, (user) => user.investments)
+  @ManyToOne(() => User, (user) => user.investments, { onDelete: 'CASCADE' })
   @Exclude()
   investor: User;
 }

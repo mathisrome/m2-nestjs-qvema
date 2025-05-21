@@ -67,6 +67,6 @@ export class UsersService {
   }
 
   delete(id: string) {
-    return this.usersRepository.delete(id)
+    return this.usersRepository.delete(id);
   }
 }
