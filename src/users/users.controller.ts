@@ -72,6 +72,7 @@ export class UsersController {
   }
 
   @Post('/interests')
+  @HttpCode(200)
   async updateInterests(@Request() req, @Body() interests: InterestsUserDto) {
     const user = await this.usersService.findOneByEmail(req.user.email);
 

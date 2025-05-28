@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post, UnauthorizedException } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
 import { User } from 'src/users/entities/user.entity';
@@ -14,6 +14,7 @@ export class AuthController {
   ) {}
 
   @Post('/login')
+  @HttpCode(200)
   async login(@Body() loginDto: LoginDto) {
     const user: User | null = await this.authService.validateUser(
       loginDto.email,
