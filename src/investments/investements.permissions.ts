@@ -12,4 +12,8 @@ export const permissions: Permissions<Role, Subjects, Actions> = {
   investor({ can, user }) {
     can(Actions.delete, Investment, { 'investor.id': user.id });
   },
+
+  admin({ can }) {
+    can(Actions.manage, 'all');
+  },
 };

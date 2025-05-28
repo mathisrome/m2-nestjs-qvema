@@ -31,8 +31,9 @@ export class UsersController {
   }
 
   @Get()
+  @Roles('admin')
   findAll() {
-    return this.usersService.findAll();
+    return plainToInstance(User, this.usersService.findAll());
   }
 
   @Get('/profile')

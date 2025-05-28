@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   UseGuards,
@@ -12,14 +11,12 @@ import {
 } from '@nestjs/common';
 import { InvestmentsService } from './investments.service';
 import { CreateInvestmentDto } from './dto/create-investment.dto';
-import { UpdateInvestmentDto } from './dto/update-investment.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { UseAbility, Actions } from 'nest-casl';
 import { Investment } from './entities/investment.entity';
 import { UsersService } from 'src/users/users.service';
-import { use } from 'passport';
 import { ProjectsService } from 'src/projects/projects.service';
 import { plainToInstance } from 'class-transformer';
 
@@ -33,7 +30,7 @@ export class InvestmentsController {
   ) {}
 
   @Post()
-  @Roles('investor')
+  @Roles('investor', 'admin')
   async create(
     @Body() createInvestmentDto: CreateInvestmentDto,
     @Request() req,
@@ -63,13 +60,13 @@ export class InvestmentsController {
   }
 
   @Get()
-  @Roles('investor')
+  @Roles('investor', 'admin')
   async findAll(@Request() req) {
     return this.investmentsService.findAll(req.user.email);
   }
 
   @Delete(':id')
-  @Roles('investor')
+  @Roles('investor', 'admin')
   @UseAbility(Actions.delete, Investment)
   remove(@Param('id') id: string) {
     return this.investmentsService.remove(id);

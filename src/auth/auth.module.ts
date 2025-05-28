@@ -16,7 +16,7 @@ import { JwtStrategy } from './jwt.strategy';
         secret: configService.get<string>('JWT_SECRET'),
         signOptions: {
           expiresIn: parseInt(
-            configService.get<string>('JWT_EXPIRES_IN ') ?? '3600',
+            configService.get<string>('JWT_EXPIRES ') ?? '3600',
           ),
         },
       }),

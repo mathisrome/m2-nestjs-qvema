@@ -31,7 +31,7 @@ export class ProjectsController {
   ) {}
 
   @Post()
-  @Roles('entrepreneur')
+  @Roles('entrepreneur', 'admin')
   async create(@Body() createProjectDto: CreateProjectDto, @Request() req) {
     createProjectDto.owner = plainToInstance(
       User,
@@ -80,7 +80,7 @@ export class ProjectsController {
     if (!user) {
       throw new NotFoundException();
     }
-    
+
     return this.projectsService.findByInterests(user.interests ?? []);
   }
 }
