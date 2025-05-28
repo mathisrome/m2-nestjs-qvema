@@ -8,6 +8,7 @@ import {
   UseGuards,
   Request,
   NotFoundException,
+  HttpCode,
 } from '@nestjs/common';
 import { InvestmentsService } from './investments.service';
 import { CreateInvestmentDto } from './dto/create-investment.dto';
@@ -68,8 +69,9 @@ export class InvestmentsController {
   @Delete(':id')
   @Roles('investor', 'admin')
   @UseAbility(Actions.delete, Investment)
+  @HttpCode(204)
   remove(@Param('id') id: string) {
-    return this.investmentsService.remove(id);
+    this.investmentsService.remove(id);
   }
 
   @Get('/project/:id')

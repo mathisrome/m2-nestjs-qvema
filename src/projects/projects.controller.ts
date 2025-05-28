@@ -9,6 +9,7 @@ import {
   Request,
   Put,
   NotFoundException,
+  HttpCode,
 } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { UpdateProjectDto } from './dto/update-project.dto';
@@ -69,8 +70,9 @@ export class ProjectsController {
       return await service.findOne(params.id);
     },
   ])
+  @HttpCode(204)
   remove(@Param('id') id: string) {
-    return this.projectsService.remove(id);
+    this.projectsService.remove(id);
   }
 
   @Get('/recommended')

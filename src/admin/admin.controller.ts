@@ -2,6 +2,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   NotFoundException,
   Param,
   UseGuards,
@@ -15,7 +16,6 @@ import { Roles } from 'src/auth/decorators/roles.decorator';
 import { InvestmentsService } from '../investments/investments.service';
 import { Investment } from '../investments/entities/investment.entity';
 import { ProjectsService } from 'src/projects/projects.service';
-import { use } from 'passport';
 
 @UseGuards(AuthGuard('jwt'), RolesGuard)
 @Controller('admin')
@@ -34,6 +34,7 @@ export class AdminController {
 
   @Delete('/users/:id')
   @Roles('admin')
+  @HttpCode(204)
   async delete_user(@Param('id') id: string) {
     const user = await this.usersService.findOne(id);
 
